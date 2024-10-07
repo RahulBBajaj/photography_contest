@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Custom CSS for the card layout and background */
+        body {
+            background-color: #f8f9fa; /* Light background color */
+            font-family: Arial, sans-serif; /* Font family */
+        }
+
+        .container {
+            max-width: 600px; /* Limit container width */
+            margin: 50px auto; /* Center the container */
+            padding: 20px; /* Add padding */
+            background-color: #fff; /* White background color */
+            border-radius: 8px; /* Add border radius for rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+        }
+
+        h1 {
+            text-align: center; /* Center-align heading */
+            margin-bottom: 20px; /* Add margin bottom */
+        }
+
+        form {
+            display: flex; /* Display form elements in a row */
+            flex-direction: column; /* Arrange form elements vertically */
+        }
+
+        label {
+            margin-bottom: 5px; /* Add margin bottom to labels */
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="file"],
+        button {
+            margin-bottom: 15px; /* Add margin bottom to input elements and button */
+            padding: 10px; /* Add padding */
+            border: 1px solid #ccc; /* Add border */
+            border-radius: 4px; /* Add border radius for rounded corners */
+            font-size: 16px; /* Set font size */
+        }
+
+        input[type="file"] {
+            border: none; /* Remove border for file input */
+        }
+
+        /* Image preview container */
+        #image-preview-container {
+            width: 100%; /* Full width */
+            border: 1px solid #ccc; /* Add border */
+            border-radius: 4px; /* Add border radius for rounded corners */
+            margin-bottom: 15px; /* Add margin bottom */
+            overflow: hidden; /* Hide overflowing content */
+        }
+
+        #image-preview {
+            width: 100%; /* Full width */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Display as block element */
+        }
+
+        button[type="submit"] {
+            background-color: #007bff; /* Blue background color */
+            color: #fff; /* White text color */
+            border: none; /* Remove border */
+            cursor: pointer; /* Add cursor pointer */
+            transition: background-color 0.3s; /* Add transition effect */
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3; /* Darker blue background color on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Image for Contest: <%= contest.topic %></h1>
+        <form action="/upload/<%= contest.uniqueId %>" method="POST" enctype="multipart/form-data">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="image">Select Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+            <!-- Image preview container -->
+            <div id="image-preview-container">
+                <img id="image-preview" src="#" alt="Image Preview" style="display: none;">
+            </div>
+            <!-- Button to upload image -->
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <script>
+        const imageInput = document.getElementById('image');
+        const imagePreview = document.getElementById('image-preview');
+
+        // Add event listener for file input change
+        imageInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            
+            // Read the image file as a data URL
+            reader.onload = function() {
+                // Set the src attribute of the image preview to the data URL
+                imagePreview.src = reader.result;
+                // Display the image preview
+                imagePreview.style.display = 'block';
+            }
+            
+            // Read the image file
+            reader.readAsDataURL(file);
+        });
+    </script>
+</body>
+</html>

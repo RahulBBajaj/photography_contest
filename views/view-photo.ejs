@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Photo</title>
+    <!-- Add your stylesheets and other head content here -->
+    <style>
+        /* Card Styles */
+        .photo-card {
+            border: 1px solid #ddd; /* Add border */
+            border-radius: 8px; /* Add border radius for rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+            margin: 20px auto; /* Add margin for spacing */
+            padding: 20px; /* Add padding */
+            max-width: 400px; /* Limit the width of the card */
+        }
+
+        .photo-card p {
+            margin: 10px 0; /* Add margin to paragraph elements */
+        }
+
+        #contestImage {
+            max-width: 100%; /* Set maximum width for the image */
+            display: block;
+            margin: auto; /* Center the image */
+            border-radius: 8px; /* Add border radius for rounded corners */
+        }
+
+        /* Button Styles */
+        .voteButton {
+            background-color: #4CAF50; /* Green background color */
+            color: white; /* White text color */
+            padding: 10px 20px; /* Add padding */
+            border: none; /* Remove border */
+            border-radius: 4px; /* Add border radius for rounded corners */
+            cursor: pointer; /* Add cursor pointer */
+            display: block;
+            margin: 10px auto; /* Center the button */
+            transition: background-color 0.3s; /* Add transition effect */
+        }
+
+        .voteButton:hover {
+            background-color: #45a049; /* Darker green background color on hover */
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <!-- Add jQuery -->
+</head>
+<body>
+    <h1 style="text-align: center;">Photos for Contest</h1>
+    <% photos.forEach(function(photo) { %>
+        <div class="photo-card">
+            <p><strong>Uploaded by:</strong> <%= photo.username %></p> <!-- Display the username -->
+            <img id="contestImage" src="<%= photo.photoUrl %>" alt="Contest Photo">
+            <button class="voteButton" data-photo-id="<%= photo._id %>">Vote</button>
+        </div>
+    <% }); %>
+
+    <script src="/scripts.js"></script>
+</body>
+</html>

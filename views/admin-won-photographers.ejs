@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Won Photographers</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .container {
+            margin: 20px auto;
+            width: 80%;
+        }
+        .winner-card {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .winner-card-item {
+            width: 30%;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .winner-card-item img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .winner-card-item h2 {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/user/dashboard">Competition details</a></li>
+            <li><a href="/admin/live-competition">View Live Competition</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Won Photographers</a></li>
+            <li><a href="/">Logout</a></li>
+            <li><a href="/register">Register</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>Won Photographers</h1>
+        <div class="winner-card">
+            <% winners.forEach(winner => { %>
+                <div class="winner-card-item">
+                    <img src="<%= winner.photoUrl %>" alt="Winning Photo">
+                    <h2>Winner of Competition <%= winner.contestId %></h2>
+                    <p>Photographer: <%= winner.winner %></p>
+                    <p>Email: <%= winner.email %></p>
+                    <!-- Add the "Notify" button -->
+                    <button class="notify-button" data-email="<%= winner.email %>">Notify</button>
+
+                </div>
+            <% }) %>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/scripts.js"></script>
+
+</body>
+</html>

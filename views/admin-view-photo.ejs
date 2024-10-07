@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin View Photo</title>
+    <!-- Add your stylesheets and other head content here -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #424242;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .card {
+            width: 300px;
+            margin: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px 10px 0 0;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 20px;
+            background-color: #fff;
+        }
+        .card-content p {
+            margin: 10px 0;
+            color: #616161;
+            font-size: 16px;
+        }
+        .chooseWinnerButton {
+            background-color: #1e88e5; /* Blue */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        .chooseWinnerButton:hover {
+            background-color: #1976d2; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>Photo Contest</h1>
+    <div class="row">
+        <% photos.forEach(function(photo) { %>
+            <div class="card">
+                <img src="<%= photo.photoUrl %>" alt="Contest Photo">
+                <div class="card-content">
+                    <p>Uploaded by: <%= photo.username %></p>
+                    <button class="chooseWinnerButton" data-photo-id="<%= photo._id %>" data-photo-email="<%= photo.email %>">Choose Winner and Notify</button>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+    <!-- Include the scripts file -->
+    <!-- Add jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="/scripts.js"></script>
+</body>
+</html>

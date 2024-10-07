@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Competitions</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        /* Navigation Bar Styles */
+        nav {
+            background-color: #333; /* Set background color */
+            padding: 10px 0; /* Add padding */
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px; /* Add spacing between navigation items */
+        }
+
+        nav ul li a {
+            color: #fff; /* Set text color */
+            text-decoration: none; /* Remove underline */
+        }
+
+        /* Table Styles */
+        .heading {
+            text-align: center;
+            margin-top: 20px; /* Add margin at the top */
+        }
+
+        .container {
+            margin: 0 auto;
+            width: 80%;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #ccc;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/user/dashboard">Competition Details</a></li>
+            <li><a href="/user/live-competition">View Live Competition</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="/user/won-photographers">Won Photographers</a></li>
+            <li><a href="/">Logout</a></li>
+            <li><a href="/register">Register</a></li>
+            <li>Welcome! Photographer/Voter</li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1 class="heading">All Contests</h1>
+        <div class="md-3">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Unique ID</th>
+                        <th>Topic</th>
+                        <th>Last Date</th>
+                        <th>Uploads</th> <!-- Add a new column for Uploads -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <% contests.forEach(contest => { %>
+                        <tr>
+                            <td><%= contest.uniqueId %></td>
+                            <td><%= contest.topic %></td>
+                            <td><%= contest.lastDate %></td>
+                            <td><a href="/upload/<%= contest.uniqueId %>">Yes</a></td> <!-- Link to upload page for each contest -->
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

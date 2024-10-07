@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Contest</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* Set a light background color */
+        }
+
+        nav {
+            background-color: #333; /* Set a dark background color for the navigation bar */
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease; /* Add smooth color transition on hover */
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00; /* Change link color on hover */
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh; /* Center the logo container vertically */
+        }
+
+        .logo {
+            text-align: center;
+            margin: 0 20px;
+        }
+
+        .logo img {
+            width: 150px; /* Adjust the image size as needed */
+            margin-bottom: 10px;
+        }
+
+        .logo p {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="/admin/login">Admin</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">New User Register</a></li>
+        </ul>
+    </nav>
+    <div class="logo-container">
+        <div class="logo" id="admin-logo">
+            <img src="/user_logo.png" alt="Admin"><br>
+            <a href="/admin/login">Admin</a>
+        </div>
+        <div class="logo" id="user-logo">
+            <img src="/user_logo.png" alt="User"><br>
+            <a href="/login">User Login</a>
+            
+        </div>
+    </div>
+</body>
+</html>
